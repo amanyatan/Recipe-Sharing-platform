@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaad - Cook with Love</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Splash Screen Loader -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="loader-animation">
+                <div class="utensils-container">
+                    <i class="fas fa-utensils spoon-fork"></i>
+                </div>
+                <div class="glowing-ring"></div>
+            </div>
+            <h2 class="splash-title">Swaad</h2>
+            <p class="splash-message">Bringing you the taste of tradition...</p>
+        </div>
+    </div>
+
+    <!-- Star Field Background -->
+    <div class="star-field">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>Swaad</h1>
+                    <span class="tagline">Cook with Love</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary" id="addRecipeBtn">
+                        <i class="fas fa-plus"></i>
+                        Add Recipe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2 class="welcome-title">Welcome to Your Kitchen</h2>
+                <p class="welcome-text">Discover amazing recipes, create your own culinary masterpieces, and share the joy of cooking with loved ones.</p>
+            </section>
+
+            <!-- Search and Filter -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search recipes by name, ingredients, or cuisine...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="breakfast">Breakfast</button>
+                        <button class="filter-btn" data-filter="lunch">Lunch</button>
+                        <button class="filter-btn" data-filter="dinner">Dinner</button>
+                        <button class="filter-btn" data-filter="dessert">Dessert</button>
+                        <button class="filter-btn" data-filter="vegetarian">Vegetarian</button>
+                        <button class="filter-btn" data-filter="non-vegetarian">Non-Vegetarian</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recipe Grid -->
+            <section class="recipes-section">
+                <div class="recipes-grid" id="recipesGrid">
+                    <!-- Recipe cards will be dynamically inserted here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Cart Page -->
+    <div class="page-content" id="cartPage" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">
+                    <i class="fas fa-shopping-cart"></i>
+                    Your Cart
+                </h2>
+                <p class="page-subtitle">Selected recipes for your cooking adventure</p>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div class="page-content" id="profilePage" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">
+                    <i class="fas fa-user"></i>
+                    Your Profile
+                </h2>
+                <p class="page-subtitle">Manage your cooking preferences</p>
+            </div>
+            <div class="profile-content">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3>Chef Elite</h3>
+                        <p class="profile-email"><elite class="family"></elite>@swaad.com</p>
+                        <p class="profile-bio">Passionate home cook who loves experimenting with traditional Indian flavors and modern techniques.</p>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-heart"></i>
+                        <span class="stat-number" id="favoriteCount">0</span>
+                        <span class="stat-label">Favorites</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-utensils"></i>
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Recipes Created</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">Average Rating</span>
+                    </div>
+                </div>
+                <div class="profile-preferences">
+                    <h4>Cooking Preferences</h4>
+                    <div class="preference-tags">
+                        <span class="preference-tag">Vegetarian</span>
+                        <span class="preference-tag">Indian Cuisine</span>
+                        <span class="preference-tag">Quick Meals</span>
+                        <span class="preference-tag">Healthy Options</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Page -->
+    <div class="page-content" id="categoriesPage" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">
+                    <i class="fas fa-th-large"></i>
+                    Recipe Categories
+                </h2>
+                <p class="page-subtitle">Explore recipes by category</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="breakfast">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Breakfast</h3>
+                    <p>Start your day right</p>
+                </div>
+                <div class="category-card" data-category="lunch">
+                    <i class="fas fa-hamburger"></i>
+                    <h3>Lunch</h3>
+                    <p>Hearty midday meals</p>
+                </div>
+                <div class="category-card" data-category="dinner">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>Dinner</h3>
+                    <p>Evening delights</p>
+                </div>
+                <div class="category-card" data-category="dessert">
+                    <i class="fas fa-ice-cream"></i>
+                    <h3>Desserts</h3>
+                    <p>Sweet endings</p>
+                </div>
+                <div class="category-card" data-category="vegetarian">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Vegetarian</h3>
+                    <p>Plant-based goodness</p>
+                </div>
+                <div class="category-card" data-category="non-vegetarian">
+                    <i class="fas fa-fish"></i>
+                    <h3>Non-Vegetarian</h3>
+                    <p>Meat & seafood</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-toggle" id="navToggle">
+            <div class="nav-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-items">
+                <a href="#" class="nav-item active" data-section="recipes">
+                    <i class="fas fa-home"></i>
+                    <span>Recipes</span>
+                </a>
+                <a href="#" class="nav-item" data-section="favorites">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites</span>
+                </a>
+                <a href="#" class="nav-item" data-section="categories">
+                    <i class="fas fa-th-large"></i>
+                    <span>Categories</span>
+                </a>
+                <a href="#" class="nav-item" data-section="shopping">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shopping</span>
+                </a>
+                <a href="#" class="nav-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Recipe Modal -->
+    <div class="modal" id="recipeModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Recipe Modal -->
+    <div class="modal" id="addRecipeModal">
+        <div class="modal-overlay" id="addModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="addModalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Add New Recipe</h2>
+                <p>Share your culinary creation with the world</p>
+            </div>
+            <form class="recipe-form" id="recipeForm">
+                <div class="form-group">
+                    <label for="recipeName">Recipe Name</label>
+                    <input type="text" id="recipeName" required placeholder="Enter recipe name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipeImage">Recipe Image URL</label>
+                    <input type="url" id="recipeImage" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prepTime">Prep Time (minutes)</label>
+                        <input type="number" id="prepTime" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="cookTime">Cook Time (minutes)</label>
+                        <input type="number" id="cookTime" required min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="servings">Servings</label>
+                        <input type="number" id="servings" required min="1">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select category</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="non-vegetarian">Non-Vegetarian</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="difficulty">Difficulty</label>
+                    <select id="difficulty" required>
+                        <option value="">Select difficulty</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3" placeholder="Brief description of your recipe"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ingredients">Ingredients</label>
+                    <textarea id="ingredients" rows="5" required placeholder="Enter ingredients, one per line"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="instructions">Instructions</label>
+                    <textarea id="instructions" rows="6" required placeholder="Enter cooking instructions, one step per line"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelForm">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Recipe
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
